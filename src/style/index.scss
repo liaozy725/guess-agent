@@ -1,0 +1,191 @@
+@import './transition.scss';
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+address,
+em,
+img,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 0;
+  vertical-align: baseline;
+  color: #d7d4de;
+}
+
+// HTML5 display-role reset for older browsers
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+  font-family:'黑体', Helvetica,sans-serif,'微软雅黑' !important;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: auto;
+  background: #181819;
+  -webkit-overflow-scrolling: touch;
+}
+
+input {
+  font-size: 24px;
+  border: 0;
+  background: transparent;
+}
+
+img {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+input::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #777;
+  }
+ 
+  input:-moz-placeholder,
+  textarea:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #777;
+  }
+ 
+  input::-moz-placeholder,
+  textarea::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #777;
+  }
+ 
+  input:-ms-input-placeholder,
+  textarea:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #777;
+  }
+.container {
+  height: 100%;
+}
+.clearfix::before,
+.clearfix::after {
+	content: "";
+	height: 0;
+	line-height: 0;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+	/*IE/7/6*/
+}
+
+.rt {
+	float: right;
+}
+
+.fl {
+	float: left;
+}
+.between{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/*公共确认按钮*/
+.sure-big-btn{
+  height: 80px;
+  background-color: #ffc444;
+  border-radius: 5px;
+  width: 100%;
+  color: #000;
+  font-size: 29px;
+  text-align: center;
+  line-height: 80px;
+  margin-top: 90px;
+}

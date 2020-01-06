@@ -1,0 +1,117 @@
+/**vant**/
+.van-toast--text .van-toast__text{
+  font-size: 24px;
+  color: #fff;
+}
+/*数字键盘样式star*/
+.van-number-keyboard{
+  background-color: #333333;
+}
+.van-key{
+  color: #fff;
+}
+.van-cell {
+  background-color: #35333b !important;
+  outline:none
+}
+.van-key--gray{
+  background-color: #666;
+}
+.van-field__control {
+  font-size: 29px;
+  color: #fff;
+}
+[class*=van-hairline]::after{
+  border-color: #666;
+}
+/*数字键盘样式end*/
+/*pickek组件-star*/
+.van-picker-column__item{
+  font-size: 26px;
+  color: #d7d4de;
+}
+.van-picker{
+   background-color: #35333b;
+}
+.van-picker__cancel, .van-picker__confirm{
+  color: #d7d4de;
+}
+[class*=van-hairline]::after{
+}
+.van-picker__mask{
+  background-image: -webkit-gradient(linear,left top, left bottom,from(rgba(53,51,59,.9)),to(rgba(53,51,59,.7))),-webkit-gradient(linear,left bottom, left top,from(rgba(53,51,59,.9)),to(rgba(53,51,59,.7)));
+  background-image: linear-gradient(180deg,rgba(53,51,59,.9),rgba(53,51,59,.7)),linear-gradient(0deg,rgba(53,51,59,.9),rgba(53,51,59,.7));
+}
+/*pickek组件-end*/
+/*密码支付样式-star*/
+.van-password-input{
+  margin: 0;
+}
+.van-password-input__security li{
+  width: 80px;
+  height: 80px;
+  background-color: #36333c;
+}
+.van-password-input__security li i{
+  background-color: #d7d4de;
+}
+/*密码支付样式-end*/
+/* tabs */
+.van-tabs{
+  padding: 0 20px;
+  background-color: #252426 !important;
+}
+.van-tabs .van-tabs__nav{
+  background-color: #252426 !important;
+}
+.van-tabs .van-ellipsis{
+  font-size: 24px;
+}
+.van-tabs .van-tab--active .van-ellipsis{
+  color: #ffc444;
+}
+.van-tabs .van-tabs__line{
+  background-color: #ffc444;
+  bottom: 44px;
+}
+.van-tabs__wrap--scrollable .van-tab{
+  -webkit-box-flex: 0 !important;
+      -ms-flex: 0 0 20% !important;
+          flex: 0 0 20% !important;
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+}
+
+
+/* toast样式 */
+.van-toast__text{
+  font-size: 22px;
+}
+/*vant 弹框样式*/
+.van-button__text{
+  font-size: 32px;
+}
+/* dialog 样式 */
+.van-dialog__header{
+  font-size: 32px;
+  color: #000;
+  font-weight: bold;
+}
+.van-dialog__message{
+  color: #444;
+}
+.van-dialog__cancel span{
+  color: #333;
+}
+.van-dialog__confirm{
+  background-color: #ffc444;
+}
+.van-dialog__confirm span{
+  color: #000;
+}
+
+/* toast */
+.van-icon__image{
+  width: 70px;
+  height: 70px;
+}

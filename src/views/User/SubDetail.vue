@@ -74,7 +74,7 @@ export default {
       }
       for (const key in this.prestoreInputs) {
         if (this.prestoreInputs.hasOwnProperty(key)) {
-          params[key] = parseFloat(this.prestoreInputs[key])
+          params[key] = parseFloat(this.prestoreInputs[key]) || 0
         }
       }
       this.$http.post('subordinate/update',params).then(res=>{

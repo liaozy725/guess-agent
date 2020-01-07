@@ -16,7 +16,7 @@ export default {
     return {
       loading: false,
       finished: false,
-      listData: [1, 2, 3, 4],
+      listData: [],
       pageNum: 0,
       pageSize: 20,
     }
@@ -28,11 +28,29 @@ export default {
     // 获取列表
     getList() {
       this.loading = true;
+      var params = {
+        token: this.$store.state.token,
+        pageSize: this.pageSize,
+        pageNum: this.pageNum,
+      }
+      this.$http.post('subordinate/list',params).then(res=>{
+        this.loading = false;
+        if(res.retCode==0){
+          this.listData = this.listData.concat(res.data);
+          this.pageNum++;
+          if (res.data.length < this.pageSize) {
+            this.finished = true;
+          }
+        }
+      })
     },
     // 跳转详情
     jumpLink(item){
       this.$router.push({
-        path:'/layout/SubDetail'
+        path:'/layout/SubDetail',
+        query:{
+          id:item.userId
+        }
       })
     }
   }

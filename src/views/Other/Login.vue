@@ -4,30 +4,8 @@
       <div class="logo">
         <img src="../../assets/login-logo.png" alt="">
       </div>
-      <!-- 注册 -->
-      <div class="register login-main" v-if="isRegister">
-        <p class="title">注册</p>
-        <div class="input-box">
-          <img src="../../assets/login-user.png" class="label" alt="">
-          <input type="text" v-model="signIn.loginAccount" placeholder="用户名（4-12位小写字母或数字）" @blur="windowScrollBack" maxlength="12" minlength="4" :change="onInputChange('loginAccount')" />
-        </div>
-        <div class="input-box">
-          <img src="../../assets/login-pwd.png" class="label" alt="">
-          <input type="password" v-model="signIn.loginPassword" placeholder="密码（6-12位小写字母或数字）" @blur="windowScrollBack" maxlength="12" minlength="6" />
-        </div>
-        <div class="input-box">
-          <img src="../../assets/login-pwd.png" class="label" alt="">
-          <input type="password" v-model="signIn.confirmPassword" placeholder="请再次输入密码" @blur="windowScrollBack" maxlength="12" minlength="6" />
-        </div>
-        <div class="input-box">
-          <img src="../../assets/login-invite.png" class="label" alt="">
-          <input type="text" v-model="signIn.invitationCode" @blur="windowScrollBack" placeholder="推荐码（非必填）" />
-        </div>
-        <div class="btn" @click="registerFun">注册</div>
-        <p class="back" @click="isRegister=false;">返回登录</p>
-      </div>
       <!-- 登录 -->
-      <div class="sign-in login-main" v-else>
+      <div class="sign-in login-main">
         <p class="title">登录</p>
         <div class="input-box">
           <img src="../../assets/login-user.png" class="label" alt="">
@@ -37,12 +15,12 @@
           <img src="../../assets/login-pwd.png" class="label" alt="">
           <input type="password" v-model="loginForm.loginPassword" @blur="windowScrollBack" placeholder="请输入密码" maxlength="12" minlength="6" />
         </div>
-        <div class="other">
+        <!-- <div class="other">
           <span @click="isRegister=true;">账号注册</span>
           <span>忘记密码</span>
-        </div>
+        </div> -->
         <div class="btn" @click="login">登录</div>
-        <router-link to="/layout/home" class="back">我先逛逛</router-link>
+        <!-- <router-link to="/layout/home" class="back">我先逛逛</router-link> -->
       </div>
     </div>
   </div>
@@ -62,8 +40,8 @@ export default {
         invitationCode: ""
       },
       loginForm: {
-        loginAccount: "",
-        loginPassword: ""
+        loginAccount: "leo123",
+        loginPassword: "123456"
       },
       isRegister: false // 是否注册
     };
@@ -78,47 +56,6 @@ export default {
     // 限制输入英文 数字
     onInputChange(key) {
       this.signIn[key] = this.signIn[key].replace(/[^\a-\z\A-\Z0-9]/g, "");
-    },
-    // 注册
-    registerFun() {
-      if (!this.signIn.loginAccount || this.signIn.loginAccount.length < 4) {
-        this.$toast({
-          duration: 1000,
-          icon: iconWarning,
-          forbidClick: true, // 禁用背景点击
-          message: "请输入正确的用户名"
-        });
-        return
-      }
-      if (!this.signIn.loginPassword || this.signIn.loginPassword.length < 6) {
-        this.$toast({
-          duration: 1000,
-          icon: iconWarning,
-          forbidClick: true, // 禁用背景点击
-          message: "请输入正确的密码"
-        });
-        return
-      }
-      if (this.signIn.loginPassword != this.signIn.confirmPassword) {
-        this.$toast({
-          duration: 1000,
-          icon: iconWarning,
-          forbidClick: true, // 禁用背景点击
-          message: "密码不一致"
-        });
-        return
-      }
-      this.$http.post("account/register", JSON.stringify(this.signIn)).then(res => {
-        if (res.retCode == 0) {
-          this.$toast.success({
-            duration: 1000,
-            icon: iconSuccess,
-            forbidClick: true, // 禁用背景点击
-            message: "注册成功！"
-          });
-          this.isRegister = false;
-        }
-      });
     },
     // 登录
     login() {
@@ -150,7 +87,7 @@ export default {
         if (res.retCode == 0) {
           this.$store.commit("setToken", res.data.token);
           this.uploadUserInfo();
-          this.$router.replace("/layout/home");
+          this.$router.replace("/layout/Bonus");
         }
       });
     },

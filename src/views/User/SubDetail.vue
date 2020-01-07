@@ -1,35 +1,88 @@
 <template>
   <div class="container sub-detail">
-    <van-list class="sub-list" v-model="loading" :finished="finished" finished-text="没有更多了" @load="getList">
-      <div class="sub-item" v-for="(item,index) in 20" @click="jumpLink(item)">
-        <span>王小明</span>
-        <p>0.020</p>
+    <div class="sub-list">
+      <div class="sub-item" v-for="(value,key,index) in prestoreInputs">
+        <span>{{indexList[index]}}分润</span>
+        <!-- <p>{{item}}</p> -->
+        <input type="number" v-model="prestoreInputs[key]" />
       </div>
-    </van-list>
+    </div>
     <div class="btn-box">
-      <div class="submit-btn">完成</div>
+      <div class="submit-btn" @click="submit()">完成</div>
     </div>
   </div>
 
 </template>
 
 <script>
+let iconSuccess = require('@/assets/icon-success.png');
 export default {
   data() {
     return {
       loading: false,
       finished: false,
-      listData: [1, 2, 3, 4],
+      listData: [],
       pageNum: 0,
       pageSize: 20,
+      userInfo:{
+        prestoreList:[]
+      },
+      indexList:['他的','二级','三级','四级','五级','六级','七级','八级','九级','十级'],
+      prestoreInputs:{
+        prestore1:1,
+        prestore2:1,
+        prestore3:1,
+        prestore4:1,
+        prestore5:1,
+        prestore6:1,
+        prestore7:1,
+        prestore8:1,
+        prestore9:1,
+      }
     }
   },
   created() {
-    this.$store.commit("setPageTitle", "王小明");
+    
+    this.getUserInfo()
   },
   methods: {
-    getList() {
+    // 获取用户信息
+    getUserInfo() {
+      let params = {
+        token: this.$store.state.token,
+        userId: this.$route.query.id
+      }
+      this.$http.post('subordinate/info',params).then(res=>{
+        if(res.retCode ==0){
+          for (const key in res.data) {
+            if (res.data.hasOwnProperty(key)) {
+              if(key.includes('prestore')){
+                this.prestoreInputs[key] = res.data[key]
+              }
+            }
+          }
+          this.userInfo = res.data;
 
+        }
+      })
+    },
+    // 提交分润
+    submit(){
+      let params = {
+        token: this.$store.state.token,
+        userId: this.$route.query.id,
+      }
+      for (const key in this.prestoreInputs) {
+        if (this.prestoreInputs.hasOwnProperty(key)) {
+          params[key] = parseFloat(this.prestoreInputs[key])
+        }
+      }
+      this.$http.post('subordinate/update',params).then(res=>{
+        if(res.retCode==0){
+          this.$toast({ duration: 2000, forbidClick: true,icon: iconSuccess,  message: "保存成功" });
+          this.getUserInfo();
+        }
+      })
     }
   }
 }
@@ -53,7 +106,7 @@ export default {
       font-size: 24px;
       flex: 1;
     }
-    p {
+    input {
       border: 2px solid $yellow;
       font-size: 24px;
       color: $yellow;

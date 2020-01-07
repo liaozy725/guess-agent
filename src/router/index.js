@@ -12,7 +12,7 @@ var router = new Router({
   routes: [
     {
       path:'',
-      redirect:'/layout/home'
+      redirect:'/layout/Bonus'
     },
     {
       path: '/layout',
@@ -20,15 +20,15 @@ var router = new Router({
       component: Layout,
       children:[
         //首页
-        {path:'/layout/home',name:'home',component: Home,meta: { keepAlive: true }},
+        // {path:'/layout/home',name:'home',component: Home,meta: { keepAlive: true }},
         // 首页 - 竞猜详情
-        {path:'/layout/GuessDetail',name:'GuessDetail',component: () => import('@/views/Home/GuessDetail.vue') ,meta: { keepAlive: true, title:'竞猜' }},
+        // {path:'/layout/GuessDetail',name:'GuessDetail',component: () => import('@/views/Home/GuessDetail.vue') ,meta: { keepAlive: true, title:'竞猜' }},
         // 首页 - 赛果
-        {path:'/layout/GuessRes',name:'GuessRes',component: () => import('@/views/Home/GuessRes.vue') ,meta: { keepAlive: true, title:'赛果' }},
+        // {path:'/layout/GuessRes',name:'GuessRes',component: () => import('@/views/Home/GuessRes.vue') ,meta: { keepAlive: true, title:'赛果' }},
         // 首页 - 赛果详情
-        {path:'/layout/GuessResDetail',name:'GuessResDetail',component: () => import('@/views/Home/GuessResDetail.vue') ,meta: { keepAlive: true, title:'赛果详情' }},
+        // {path:'/layout/GuessResDetail',name:'GuessResDetail',component: () => import('@/views/Home/GuessResDetail.vue') ,meta: { keepAlive: true, title:'赛果详情' }},
         // 历史竞猜
-        {path:'/layout/GuessHistory',name:'GuessHistory',component: () => import('@/views/Home/GuessHistory.vue') ,meta: { keepAlive: true, title:'投注历史' }},
+        // {path:'/layout/GuessHistory',name:'GuessHistory',component: () => import('@/views/Home/GuessHistory.vue') ,meta: { keepAlive: true, title:'投注历史' }},
         //用户中心-充值
         {path:'/layout/pay',name:'pay',component: () => import('@/views/User/pay.vue'),meta: { keepAlive: true ,title:'充值',}},
         //用户中心-充值-二维码弹框

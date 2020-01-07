@@ -73,7 +73,7 @@ export default {
         pageNum: this.pageNum,
       }
       this.loading = true;
-      let url = this.activeNav == 1 ? 'userPrizeInfo/list' : 'userPrizeInfo/levelList';
+      let url = this.activeNav == 1 ? 'userPrizeInfo/list' : 'subordinate/list';
       this.$http.post(url, params).then(res => {
         if (res.retCode == 0) {
           this.listData = this.listData.concat(res.data);
@@ -100,6 +100,15 @@ export default {
     // 复制失败
     onCopyError() {
 
+    },
+    // 下属
+    mySub(item){
+      this.$router.push({
+        path:'/layout/MySub',
+        query:{
+          id:item.id
+        }
+      })
     }
   }
 }
@@ -189,11 +198,13 @@ export default {
       }
     }
     .list-team {
-      padding: 40px 30px 0;
-      background: $border-color;
+      padding: 0px 30px 0;
+      margin-top: 40px;
       border-radius: 5px;
+      background: $border-color;
       li {
         display: flex;
+        
         padding-bottom: 40px;
         span {
           flex: 1;

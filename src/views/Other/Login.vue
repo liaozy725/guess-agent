@@ -6,7 +6,7 @@
       </div>
       <!-- 登录 -->
       <div class="sign-in login-main">
-        <p class="title">登录</p>
+        <p class="title">推广登录</p>
         <div class="input-box">
           <img src="../../assets/login-user.png" class="label" alt="">
           <input type="text" v-model="loginForm.loginAccount" @blur="windowScrollBack" placeholder="请输入用户名" maxlength="12" minlength="4" />

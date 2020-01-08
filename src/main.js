@@ -46,7 +46,7 @@ axios.interceptors.response.use(response=>{
         message:response.data.errorMsg || '退出登录',
         icon:iconWarining
       });
-      // router.replace('/login');
+      router.replace('/login');
       return response.data;
     }else{
       Toast({

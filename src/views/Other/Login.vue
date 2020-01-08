@@ -40,8 +40,8 @@ export default {
         invitationCode: ""
       },
       loginForm: {
-        loginAccount: "leo123",
-        loginPassword: "123456"
+        loginAccount: "",
+        loginPassword: ""
       },
       isRegister: false // 是否注册
     };

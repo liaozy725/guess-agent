@@ -3,7 +3,7 @@
     <p class="sub-title">我的直接下属</p>
     <van-list class="sub-list" v-model="loading" :finished="finished" finished-text="没有更多了" @load="getList">
       <div class="sub-item" v-for="(item,index) in listData" @click="jumpLink(item)">
-        <span>王小明</span>
+        <span>{{item.userNick}}</span>
         <img src="../../assets/icon-down.png" alt="">
       </div>
     </van-list>

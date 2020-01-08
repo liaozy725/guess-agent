@@ -36,9 +36,9 @@
         <!-- 我的下属 -->
         <ul class="list list-team" v-else>
           <li v-for="item in listData">
-            <span>{{item.accountLogin}}</span>
+            <span>{{item.userNick}}</span>
             <span>{{levelObj[item.level]}}</span>
-            <span>总奖金{{item.userPrize}}元</span>
+            <span>总奖金{{item.money}}元</span>
           </li>
         </ul>
       </van-list>
@@ -63,6 +63,7 @@ export default {
   },
   created() {
     this.$store.commit("setPageTitle", "奖金");
+    this.getUserInfo()
   },
   methods: {
     // 获取列表
@@ -73,7 +74,7 @@ export default {
         pageNum: this.pageNum,
       }
       this.loading = true;
-      let url = this.activeNav == 1 ? 'userPrizeInfo/list' : 'subordinate/list';
+      let url = this.activeNav == 1 ? 'userPrizeInfo/list' : 'level/list';
       this.$http.post(url, params).then(res => {
         if (res.retCode == 0) {
           this.listData = this.listData.concat(res.data);
@@ -109,7 +110,14 @@ export default {
           id:item.id
         }
       })
-    }
+    },
+    getUserInfo() {
+      this.$http.post("userInfo/userInfo", { token: this.$store.state.token }).then(res => {
+        if (res.retCode == 0) {
+          this.$store.commit("setUserInfo", res.data);
+        }
+      });
+    },
   }
 }
 </script>
@@ -204,8 +212,7 @@ export default {
       background: $border-color;
       li {
         display: flex;
-        
-        padding-bottom: 40px;
+        padding: 20px 0;
         span {
           flex: 1;
           font-size: 24px;

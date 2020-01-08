@@ -9,9 +9,10 @@
       </div>
     </div>
     <div class="nav" v-else>
-      <div @click="$router.go(-1)" class="nav-l">
+      <div @click="$router.go(-1)" class="nav-l" v-if="$store.state.pageTitle !='奖金'">
         <img src="../assets/icon-l.png" alt />
       </div>
+      <div class="nav-l" v-else @click="logout">注销</div>
       <div class="nav-center">
         <span>{{$store.state.pageTitle}}</span>
       </div>
@@ -93,10 +94,10 @@ export default {
   methods: {
     // 登出
     logout() {
+      this.$router.replace("/login");
       localStorage.clear();
       this.$store.commit('setToken','')
       this.$store.commit('setUserInfo',null)
-      this.$router.replace("/login");
     },
     // 调整登录页
     gotoLogin(){
@@ -162,6 +163,8 @@ export default {
       width: 100px;
       padding-left: 30px;
       margin-right: 100px;
+      font-size: 28px;
+      color: #fff;
       img {
         width: 18px;
       }

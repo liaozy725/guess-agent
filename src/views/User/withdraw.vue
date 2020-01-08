@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="content-body content-b between">
-        <p class="content-label" v-if="userInfo">当前可提现金额 {{userInfo.userBalance||0}}</p>
+        <p class="content-label" v-if="userInfo">当前可提现奖金 {{userInfo.userPrize||0}}</p>
 
         <div class></div>
         <div class="btn" @click="allWithdraw">全部提现</div>
@@ -175,11 +175,8 @@ export default {
     },
     //点击全部提现
     allWithdraw() {
-      // if(this.userInfo.userBalance>0){
-
-      // }
-      if (this.userInfo && this.userInfo.userBalance) {
-        this.price = this.userInfo.userBalance + "";
+      if (this.userInfo && this.userInfo.userPrize) {
+        this.price = this.userInfo.userPrize + "";
       } else {
         this.price = "0";
       }
@@ -218,12 +215,8 @@ export default {
       if (!!this.price) {
         if (parseFloat(this.price) <= 100000) {
           if (parseFloat(this.price) >= 50) {
-            console.log(
-              parseFloat(this.userInfo.userBalance),
-              parseFloat(this.price)
-            );
             if (
-              parseFloat(this.userInfo.userBalance) >= parseFloat(this.price)
+              parseFloat(this.userInfo.userPrize) >= parseFloat(this.price)
             ) {
               this.showShopCar = true;
             } else {

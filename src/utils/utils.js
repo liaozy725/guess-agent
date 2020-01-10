@@ -17,9 +17,24 @@ export function regNum(num) {
 }
 // 验证数字
 export function uploadUserInfo(num) {
-  this.$http.post("userInfo/userInfo", {token:this.$store.state.token}).then(res => {
+  this.$http.post("userInfo/userInfo", {
+    token: this.$store.state.token
+  }).then(res => {
     if (res.retCode == 0) {
       this.$store.commit("setUserInfo", res.data);
     }
   });
+}
+// 获取元素自适应之后的宽度
+export function getEleWidth(w) {
+  var real = 0;
+  try {
+    //以宽度750px设计稿做宽度的自适应
+    var res = window.screen.width;
+    var scale = (750 / 2) / (w / 2);
+    real = Math.floor(res / scale);
+    return real;
+  } catch (e) {
+    return false;
+  }
 }

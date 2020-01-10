@@ -14,7 +14,7 @@
       </div>
       <div class="nav-l" v-else @click="logout">注销</div>
       <div class="nav-center">
-        <span>{{$store.state.pageTitle}}</span>
+        <span>{{$store.state.pageTitle || $route.meta.title}}</span>
       </div>
       <div class="nav-r">
         <slot name='nav-r-slot'></slot>

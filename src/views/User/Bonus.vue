@@ -13,9 +13,13 @@
         全部提现
       </router-link>
     </div>
-    <div class="code">
+    <!-- <div class="code">
       <span class="code-txt">我的邀请码：{{$store.state.userInfo.invitationCode}}</span>
       <span class="code-btn" v-clipboard:copy="$store.state.userInfo.invitationCode" v-clipboard:success="onCopySuccess" v-clipboard:error="onCopyError">复制</span>
+    </div> -->
+    <div class="code" @click="lookCode">
+      <span class="code-txt">查看我的推广二维码</span>
+      <img src="../../assets/icon-down.png" alt="">
     </div>
     <div class="list-box">
       <div class="nav">
@@ -118,6 +122,14 @@ export default {
         }
       });
     },
+    lookCode(){
+      this.$router.push({
+        path:'/layout/mycode',
+        query:{
+          code:this.$store.state.userInfo.invitationCode
+        }
+      })
+    }
   }
 }
 </script>
@@ -168,6 +180,10 @@ export default {
       padding: 8px 16px;
       border: 1px solid $yellow /*no*/;
       border-radius: 5px;
+    }
+    img{
+      width: 33px;
+      transform: rotateZ(-90deg);
     }
   }
   .list-box {

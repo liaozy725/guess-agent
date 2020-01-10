@@ -57,6 +57,8 @@ var router = new Router({
         {path:'/layout/MySub',name:'MySub',component: () => import('@/views/User/MySub.vue'),meta: { keepAlive: true ,title:'设置',}},
         //用户中心-我的直接下属 - 下属详情
         {path:'/layout/SubDetail',name:'SubDetail',component: () => import('@/views/User/SubDetail.vue'),meta: { keepAlive: true ,title:'下属详情',}},
+        //用户中心- 我的二维码
+        {path:'/layout/mycode',name:'MyCode',component: () => import('@/views/User/MyCode.vue'),meta: { keepAlive: true ,title:'我的二维码',}},
       ]
     },
     /*******登录********/
